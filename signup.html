@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MongolArt</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jaini&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+</head>
+<body style="margin-left: 12%; background-color: #111111;">
+    <div id="login-box">
+        <div class="left">
+            <h1>Бүртгүүлэх</h1>
+            <input type="text" id="username" name="username" placeholder="Нэвтрэх нэр">
+            <input type="text" id="email" name="email" placeholder="И-мэйл хаяг">
+            <input type="password" id="password" name="password" placeholder="Нууц үг">
+
+            <input type="submit" id="signUp" name="signup_submit" value="Бүртгүүлэх">
+        </div>
+
+        <div class="right">
+            <span class="loginwith">йййй</span>
+            <button class="social-signin facebook">Facebook-р нэвтрэх</button>
+            <button class="social-signin twitter">Twitter-р нэвтрэх</button>
+            <button class="social-signin google">Google-р нэвтрэх</button>
+        </div>
+        <div class="or">эсвэл</div>
+
+    </div>
+    <div id="root"></div>
+</body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDzWW-Vf8HaGDTZMt25caeWLcRfioZI8Pw",
+      authDomain: "mongolart.firebaseapp.com",
+      databaseURL: "https://mongolart-default-rtdb.firebaseio.com",
+      projectId: "mongolart",
+      storageBucket: "mongolart.firebasestorage.app",
+      messagingSenderId: "645884045766",
+      appId: "1:645884045766:web:8be5a1df2a99490be6aac7"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+
+    document.getElementById('signUp').addEventListener('click', (e) => {
+
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var username = document.getElementById('username').value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+
+    set(ref(database, 'users/' + user.uid),{
+        username: username,
+        email:email
+    })
+    alert('Бүртгэл амжилттай үүслээ!')
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    alert('Бүртгэл амжилтгүй! Алдаа: ' + errorMessage);
+    // ..
+  }); 
+});
+</script>
+
+</html>
