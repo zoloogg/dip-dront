@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Logo } from "@/components/logo";
+import { Footer } from "@/components/footer/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,8 +38,40 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Jaini&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
       </head>
 
-      <body>
-        {children}
+      <body style={{ backgroundColor: 'black', display:'flex', justifyContent:'center' }}>
+        <div style={{ width: '1366px' }}>
+          <div
+            style={{ display: 'flex', flexDirection: 'row', flexGrow: 1, justifyContent: 'space-between', alignItems:'center', marginTop: '30px', marginBottom: '30px' }}
+          >
+            {/* Logo */}
+            <Logo />
+
+            {/* Search bar */}
+            <div>
+              <input type="text" placeholder="Хайх" style={{ width: '326px', height: '40px', background: 'white', borderRadius: '90px', border: 'none' }} />
+              <button>
+                <img style={{ width: '25px', height: '25px' }} src="image/search.png" />
+              </button>
+            </div>
+
+            {/* Buttons */}
+            <div style={{ display: 'flex', flexDirection: 'row', gap:'12px' }}>
+              <a href="/user">
+                <img style={{ width: '25px', height: '25px'}} src="/image/user.png" />
+              </a>
+              <a href="/settings">
+                <img style={{ width: '25px', height: '25px' }} src="/image/settings.png" />
+              </a>
+              <a href="/menu">
+                <img style={{ width: '30px', height: '30px' }} src="/image/menu.png" />
+              </a>
+            </div>
+          </div>
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
