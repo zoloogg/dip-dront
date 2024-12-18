@@ -29,7 +29,7 @@ const Page: FC = () => {
                             <div style={{ color: 'white', fontSize: '40px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700, wordWrap: 'break-word' }}>Зураг засах</div>
                             <div><span style={{ color: '#737373', fontSize: '24px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700, wordWrap: 'break-word' }}>Зургаа илүү </span><span style={{ color: '#FF6500', fontSize: '24px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700, wordWrap: 'break-word' }}>чанар</span><span style={{ color: '#737373', fontSize: '24px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700, wordWrap: 'break-word' }}>тай болгоорой!</span></div>
                         </div>
-                        <img style={{ width: '746px', height: '500px', opacity: '0.50' }} src="image/13.jpg" />
+                        <img style={{ width: '746px', height: '500px', opacity: '0.50' }} src="/image/13.jpg" />
                     </div>
                 </Link>
             </div>
