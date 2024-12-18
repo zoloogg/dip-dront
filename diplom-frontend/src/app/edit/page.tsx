@@ -1,9 +1,8 @@
 'use client'
 import { ImageButton, ImageButtonProps } from "@/components/buttons/ImageButton"
 import { OrangeTitle } from "@/components/typography/orangeTitle"
-import { Title } from "@/components/typography/title"
 import { useAuth } from "@/context/authContext"
-import { FC, useState } from "react"
+import { ChangeEvent, FC, useState } from "react"
 
 interface GenerateResult {
     cost: number
@@ -39,7 +38,7 @@ const Page: FC = () => {
 
     const [newImage, setNewImage] = useState<GenerateResult | undefined>()
 
-    const onImageChange = (event: any) => {
+    const onImageChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
             setImage(URL.createObjectURL(event.target.files[0]));
 
