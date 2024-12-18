@@ -17,7 +17,7 @@ export const Header = () => {
                     placeholder="Хайх"
                     style={{ width: '326px', height: '40px' }} />
                 <button>
-                    <img style={{ width: '25px', height: '25px' }} src="image/search.png" />
+                    <img style={{ width: '25px', height: '25px' }} src="/image/search.png" />
                 </button>
             </div>
 
