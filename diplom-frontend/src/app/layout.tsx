@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Logo } from "@/components/logo";
 import { Footer } from "@/components/footer/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -38,10 +28,10 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Jaini&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
       </head>
 
-      <body style={{ backgroundColor: 'black', display:'flex', justifyContent:'center' }}>
+      <body style={{ backgroundColor: 'black', display: 'flex', justifyContent: 'center', fontFamily: '"Open Sans", sans-serif' }}>
         <div style={{ width: '1366px' }}>
           <div
-            style={{ display: 'flex', flexDirection: 'row', flexGrow: 1, justifyContent: 'space-between', alignItems:'center', marginTop: '30px', marginBottom: '30px' }}
+            style={{ display: 'flex', flexDirection: 'row', flexGrow: 1, justifyContent: 'space-between', alignItems: 'center', marginTop: '30px', marginBottom: '30px' }}
           >
             {/* Logo */}
             <Logo />
@@ -55,9 +45,9 @@ export default function RootLayout({
             </div>
 
             {/* Buttons */}
-            <div style={{ display: 'flex', flexDirection: 'row', gap:'12px' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '12px' }}>
               <a href="/user">
-                <img style={{ width: '25px', height: '25px'}} src="/image/user.png" />
+                <img style={{ width: '25px', height: '25px' }} src="/image/user.png" />
               </a>
               <a href="/settings">
                 <img style={{ width: '25px', height: '25px' }} src="/image/settings.png" />
