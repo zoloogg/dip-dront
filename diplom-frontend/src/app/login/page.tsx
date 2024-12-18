@@ -1,5 +1,8 @@
 'use client'
+import { Container } from "postcss"
 import { FC, useState } from "react"
+// import { AuthContainer } from "./components/container/authContainer"
+// import { Button } from "../button"
 
 const Page: FC = () => {
     const [username, setUsername] = useState<string>('')
@@ -35,18 +38,75 @@ const Page: FC = () => {
              paddingBottom:'32px',
              paddingLeft:'170px',
              paddingRight:'170px',
-             gap: '4px'
+             gap: '10px'
 
         }}>
-            <span>Нэвтрэх</span>
-            <input value={username} onChange={e => {setUsername(e.target.value)}}/>
-            <input value={password} onChange={e => {setPassword(e.target.value)}}/>
+        <div><span style={{ 
+                color: '#FFFFFF', 
+                fontSize: '32px', 
+                fontFamily: '"Open Sans", sans-serif', 
+                fontWeight: 600, 
+                display: 'flex', 
+                justifyContent: 'center', gap: '30px',
+            }}>
+            Нэвтрэх
+            </span>
+        </div>
+        {/* <AuthContainer input='1'/> */}
+            <div style={{ backgroundColor:'#292929',
+             border: '1px solid #FF6500',
+             borderRadius: '12px',
+             width:'422px', height: '54px', }}><input value={username} onChange={e => {setUsername(e.target.value)}}/></div>
+            <div style={{ backgroundColor:'#292929',
+             border: '1px solid #FF6500',
+             borderRadius: '12px',
+             width:'422px', height: '54px', }}><input value={password} onChange={e => {setPassword(e.target.value)}}/></div>
 
-            <button onClick={onLogin}>Login button</button>
-            <button>Register button</button>
-            <span>Forgot password button</span>
+            <div style={{backgroundColor:'#FF6500',
+             border: '1px solid #FF6500',
+             borderRadius: '12px',
+             width:'422px', height: '54px',}}>
+                <div style={{
+                display: 'flex',
+                color: 'white',
+                fontSize: '24px',
+                fontFamily: '"Open Sans", sans-serif',
+                fontWeight: 400,
+                justifyContent: 'center',
+                alignItems: 'center',}}>
+                    {/* <Button text="Нэвтрэх" href='/login' /> */}
+                <button onClick={onLogin}>Нэвтрэх</button>
+                </div>
+            </div>
+            <div style={{backgroundColor:'#FF6500',
+             border: '1px solid #FF6500',
+             borderRadius: '12px',
+             width:'422px', height: '54px',}}>
+                <div style={{
+                display: 'flex',
+                color: 'white',
+                fontSize: '24px',
+                fontFamily: '"Open Sans", sans-serif',
+                fontWeight: 400,
+                justifyContent: 'center',
+                alignItems: 'center',}}>
+                <button>Бүртгүүлэх</button>
+                </div>
+            </div>
+            <div><span style={{ 
+                color: '#FFFFFF', 
+                fontSize: '20px', 
+                fontFamily: '"Open Sans", sans-serif', 
+                fontWeight: 400, 
+                display: 'flex', 
+                justifyContent: 'center' 
+            }}>
+            Нууц үг мартсан?
+            </span>
         </div>
         </div>
+        </div>
+        
     )
 }
 

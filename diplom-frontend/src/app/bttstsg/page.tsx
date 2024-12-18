@@ -22,7 +22,7 @@ const Page: FC = () => {
                     <p style={{ color: 'rgb(190, 190, 190)', fontSize: '36px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700, wordWrap: 'break-word' }}>Хүссэн зургаа үүсгэх боломж!</p>
                 </div>
 
-                <div style={{ display: 'flex', gap:'80px', marginTop:'40px' }}>
+                <div style={{ display: 'flex', gap:'80px', marginTop: '40px'}}>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'end' }}>
                         <div style={{ color: 'white', fontSize: '40px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700, wordWrap: 'break-word' }}>Зураг засах</div>
                         <div><span style={{ color: '#737373', fontSize: '24px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700, wordWrap: 'break-word' }}>Зургаа илүү </span><span style={{ color: '#FF6500', fontSize: '24px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700, wordWrap: 'break-word' }}>чанар</span><span style={{ color: '#737373', fontSize: '24px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700, wordWrap: 'break-word' }}>тай болгоорой!</span></div>
