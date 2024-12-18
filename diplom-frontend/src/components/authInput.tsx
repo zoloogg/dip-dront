@@ -11,6 +11,7 @@ export const AuthInput: FC<Props> = ({ placeholder, value, onChange }) => {
         <input
             placeholder={placeholder}
             style={{
+                color: 'white',
                 backgroundColor: '#292929',
                 border: '1px solid #FF6500',
                 borderRadius: '12px',

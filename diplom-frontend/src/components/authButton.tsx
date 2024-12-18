@@ -11,6 +11,7 @@ export const AuthButton: FC<Props> = (props) => {
     return (
         <button
             style={{
+                color: 'white',
                 backgroundColor: '#FF6500',
                 border: '1px solid #FF6500',
                 borderRadius: '12px',
@@ -20,24 +21,5 @@ export const AuthButton: FC<Props> = (props) => {
         >
             {text}
         </button>
-        // <div style={{
-        //     backgroundColor: '#FF6500',
-        //     border: '1px solid #FF6500',
-        //     borderRadius: '12px',
-        //     width: '422px', height: '54px',
-        // }}>
-        //     <div style={{
-        //         display: 'flex',
-        //         color: 'white',
-        //         fontSize: '24px',
-        //         fontFamily: '"Open Sans", sans-serif',
-        //         fontWeight: 400,
-        //         justifyContent: 'center',
-        //         alignItems: 'center',
-        //     }}>
-        //         {/* <Button text="Нэвтрэх" href='/login' /> */}
-        //         <button onClick={onLogin}>Нэвтрэх</button>
-        //     </div>
-        // </div>
     )
 }

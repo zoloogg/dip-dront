@@ -11,7 +11,7 @@ export const Footer: FC = () => {
                 </div>
                 <FooterColumn title="Зураг үүсгэх" items={[{ title: 'Энгийн зураг', href: '/generate' }, { title: 'Аниме зураг', href: '/generate' }, { title: 'Хар зураг', href: '/generate' }]} />
                 <FooterColumn title="Зураг засах" items={[{ title: 'Зураг оруулах', href: '/edit' }]} />
-                <FooterColumn title="Мэдээлэл" items={[{ title: 'Бидний тухай', href: '' }, { title: 'Бидэнтэй холбогдох', href: '' }]} />
+                <FooterColumn title="Мэдээлэл" items={[{ title: 'Бидний тухай', href: '/about-us' }, { title: 'Бидэнтэй холбогдох', href: '/about-us' }]} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', alignItems: 'center', marginTop: '24px', marginBottom: '12px' }}>
                 <img style={{ width: '20px', height: '20px', }} src="image/copyright.png" />

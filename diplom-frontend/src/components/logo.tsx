@@ -1,8 +1,9 @@
+import Link from "next/link"
 import { FC } from "react"
 
 export const Logo: FC = () => {
     return (
-        <a href="/">
+        <Link href="/">
             <div>
                 <span
                     style={{
@@ -27,6 +28,6 @@ export const Logo: FC = () => {
                     Art
                 </span>
             </div>
-        </a>
+        </Link>
     )
 }

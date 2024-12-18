@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { FC } from "react"
 
 export interface ImageButtonProps {
@@ -47,11 +48,11 @@ export const ImageButton: FC<ImageButtonProps> = ({
     }
 
     return (
-        <a href={href}>
+        <Link href={href}>
             <div>
                 <img alt="" width={45} height={45} src={getImage()} />
                 <p>{getTitle()}</p>
             </div>
-        </a>
+        </Link>
     )
 }

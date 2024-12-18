@@ -1,6 +1,4 @@
 'use client'
-import { AuthButton } from "@/components/authButton"
-import { AuthInput } from "@/components/authInput"
 import { Title } from "@/components/typography/title"
 import { useAuth } from "@/context/authContext"
 import { useRouter } from "next/navigation"
@@ -66,7 +64,9 @@ const Page: FC = () => {
                 gap: '40px'
             }}>
                 <Title title="Миний мэдээлэл" />
-                {JSON.stringify(data)}
+                <pre>
+                    {JSON.stringify(data, null, 2)}
+                </pre>
             </div>
         </div>
 

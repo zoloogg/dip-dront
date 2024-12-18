@@ -10,8 +10,12 @@ export const Header = () => {
             <Logo />
 
             {/* Search bar */}
-            <div>
-                <input type="text" placeholder="Хайх" style={{ width: '326px', height: '40px', background: 'white', borderRadius: '90px', border: 'none' }} />
+            <div className="flex bg-white rounded-3xl gap-2 px-4">
+                <input
+                    className="border-none focus:outline-none text-black"
+                    type="text"
+                    placeholder="Хайх"
+                    style={{ width: '326px', height: '40px' }} />
                 <button>
                     <img style={{ width: '25px', height: '25px' }} src="image/search.png" />
                 </button>

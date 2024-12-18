@@ -7,7 +7,7 @@ interface Props {
     href: string
 }
 
-export const ImageButton: FC<Props> = (props) => {
+export const HomeButton: FC<Props> = (props) => {
     const { href, imagePath, text } = props
 
     return (

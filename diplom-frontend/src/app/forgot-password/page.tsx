@@ -1,34 +1,26 @@
 'use client'
 import { AuthButton } from "@/components/authButton"
 import { AuthInput } from "@/components/authInput"
-import { useAuth } from "@/context/authContext"
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
-// import { AuthContainer } from "./components/container/authContainer"
-// import { Button } from "../button"
 
 const Page: FC = () => {
     const router = useRouter()
-    const { setToken } = useAuth()
-
     const [username, setUsername] = useState<string>('')
-    const [password, setPassword] = useState<string>('')
 
-    const onLogin = async () => {
-        if (!username || !password) {
-            alert('Нэр эсвэл нууц үг хоосон байна')
+    const onSubmit = async () => {
+        if (!username) {
+            alert('Нэр хоосон байна')
             return
         }
 
-        const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+        const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 username,
-                password
             })
         })
 
@@ -40,14 +32,8 @@ const Page: FC = () => {
             return
         }
 
-        alert('Амжилттай нэвтэрлээ.')
-        setToken(data.token)
-
-        router.replace('/')
-    }
-
-    const onRegister = async () => {
-        router.replace('/register')
+        alert(`Нууц үг: ${data.password}`)
+        router.replace('/login')
     }
 
     return (
@@ -74,31 +60,15 @@ const Page: FC = () => {
                         display: 'flex',
                         justifyContent: 'center', gap: '30px',
                     }}>
-                        Нэвтрэх
+                        Нууц үг сэрргээх
                     </span>
                 </div>
                 <div className="flex flex-col gap-4">
                     <AuthInput placeholder="Нэвтрэх нэр" value={username} onChange={setUsername} />
-                    <AuthInput placeholder="Нууц үг" value={password} onChange={setPassword} />
                 </div>
                 <hr />
                 <div className="flex flex-col gap-4">
-                    <AuthButton onClick={onLogin} text="Нэвтрэх" />
-                    <AuthButton onClick={onRegister} text="Бүртгүүлэх" />
-                </div>
-                <div>
-                    <Link href="/forgot-password">
-                        <span style={{
-                            color: '#FFFFFF',
-                            fontSize: '20px',
-                            fontFamily: '"Open Sans", sans-serif',
-                            fontWeight: 400,
-                            display: 'flex',
-                            justifyContent: 'center'
-                        }}>
-                            Нууц үг мартсан?
-                        </span>
-                    </Link>
+                    <AuthButton onClick={onSubmit} text="Илгээх" />
                 </div>
             </div>
         </div>

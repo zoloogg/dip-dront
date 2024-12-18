@@ -1,6 +1,6 @@
 'use client'
 import { ImageButton, ImageButtonProps } from "@/components/buttons/ImageButton"
-import { Title } from "@/components/typography/title"
+import { OrangeTitle } from "@/components/typography/orangeTitle"
 import { useAuth } from "@/context/authContext"
 import { useRouter } from "next/navigation"
 import { FC, useEffect, useState } from "react"
@@ -81,8 +81,8 @@ const Page: FC = () => {
                     })
                 }
             </div>
-            <div>
-                <Title title="Үүсгэсэн зургууд" />
+            <div className="flex flex-col p-4 gap-4">
+                <OrangeTitle>Үүсгэсэн зургууд</OrangeTitle>
                 <div className="grid grid-cols-5 gap-4">
                     {
                         isLoading

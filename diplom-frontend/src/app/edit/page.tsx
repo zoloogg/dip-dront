@@ -1,6 +1,8 @@
 'use client'
 import { ImageButton, ImageButtonProps } from "@/components/buttons/ImageButton"
+import { OrangeTitle } from "@/components/typography/orangeTitle"
 import { Title } from "@/components/typography/title"
+import { useAuth } from "@/context/authContext"
 import { FC, useState } from "react"
 
 interface GenerateResult {
@@ -10,6 +12,8 @@ interface GenerateResult {
 
 }
 const Page: FC = () => {
+    const { token } = useAuth()
+
     const buttons: ImageButtonProps[] = [
         {
             type: 'create',
@@ -49,6 +53,11 @@ const Page: FC = () => {
     }
 
     const onSubmit = async () => {
+        if (!imageData) {
+            alert('Зургийг сонгоно уу')
+            return
+        }
+
         setIsLoading(true)
         setNewImage(undefined)
 
@@ -58,10 +67,11 @@ const Page: FC = () => {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                'authorization': 'Bearer 0b6d06e5-4ec3-4253-8e45-49652aaa3df7'
+                'authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
                 image: cur,
+                description: 'convert to modern'
             }),
         })
 
@@ -88,22 +98,25 @@ const Page: FC = () => {
                     })
                 }
             </div>
-            <div>
-                <Title title="Зураг засах хэсэг" />
-                <div className="flex w-full">
+            <div className="flex flex-col w-full p-4">
+                <OrangeTitle>Зураг засах хэсэг</OrangeTitle>
+                <div className="flex gap-4 pt-4">
                     <div className="flex flex-col gap-4 w-full">
                         <input type="file" onChange={onImageChange} className="filetype" />
-                        <img alt="preview image" src={image} />
+                        {image && <img alt="preview image" src={image} />}
 
                         <button
+                            className="bg-[#FF6500] p-4 font-bold"
                             onClick={onSubmit}
                             disabled={isLoading}
                         >
-                            {isLoading ? 'Загрузка...' : 'Отправить'}
+                            {isLoading ? 'Уншиж байна' : 'Илгээх'}
                         </button>
                     </div>
                     <div className="flex w-full">
-                        <img height={250} src={`data:image/png;base64,${newImage?.image}`} />
+                        {newImage &&
+                            <img height={250} src={`data:image/png;base64,${newImage?.image}`} />
+                        }
                     </div>
                 </div>
             </div>
