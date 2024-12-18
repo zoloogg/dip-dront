@@ -3,6 +3,7 @@ import { useAuth } from "@/context/authContext";
 import { useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 import { SubscriptionItem } from "./subscriptionItem";
+import { PayDialog } from "./payDialog";
 
 export interface SubscriptionItemProps {
     id: number
@@ -32,6 +33,27 @@ const Page: FC = () => {
         setData(data.plans)
     }
 
+    const onBuy = async () => {
+        const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/subscriptions/buy`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ planId: selectedId })
+        })
+
+        const data = await result.json()
+
+        if (data.success) {
+            alert('Амжилттай худалдан авлаа.')
+            setSelectedId(null)
+            router.replace('/user')
+        } else {
+            alert('Алдаа гарлаа.')
+        }
+    }
+
     useEffect(() => {
         init()
     }, [])
@@ -50,6 +72,11 @@ const Page: FC = () => {
                         ))
                     }
                 </div>
+            }
+            {
+                selectedId !== null && (
+                    <PayDialog onClick={onBuy} />
+                )
             }
         </div>
     );
