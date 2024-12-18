@@ -1,6 +1,7 @@
 'use client'
 import { ImageButton, ImageButtonProps } from "@/components/buttons/ImageButton"
 import { Title } from "@/components/typography/title"
+import { useAuth } from "@/context/authContext"
 import { FC, useState } from "react"
 
 interface GenerateResult {
@@ -10,6 +11,9 @@ interface GenerateResult {
 
 }
 const Page: FC = () => {
+    const { token } = useAuth()
+    console.log('token: ', token);
+
     const buttons: ImageButtonProps[] = [
         {
             type: 'create',
@@ -37,6 +41,11 @@ const Page: FC = () => {
     const [data, setData] = useState<Array<GenerateResult> | undefined>()
 
     const onSubmit = async () => {
+        if (!token) {
+            alert('Та системд нэвтэрнэ үү.')
+            return
+        }
+
         setIsLoading(true)
         setData(undefined)
 
@@ -44,7 +53,7 @@ const Page: FC = () => {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                'authorization': 'Bearer 0b6d06e5-4ec3-4253-8e45-49652aaa3df7'
+                'authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
                 description,

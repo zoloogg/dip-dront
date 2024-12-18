@@ -1,6 +1,8 @@
 'use client'
 import { ImageButton, ImageButtonProps } from "@/components/buttons/ImageButton"
 import { Title } from "@/components/typography/title"
+import { useAuth } from "@/context/authContext"
+import { useRouter } from "next/navigation"
 import { FC, useEffect, useState } from "react"
 
 interface GenerateResult {
@@ -10,6 +12,9 @@ interface GenerateResult {
 
 }
 const Page: FC = () => {
+    const { token } = useAuth()
+    const router = useRouter()
+
     const buttons: ImageButtonProps[] = [
         {
             type: 'create',
@@ -33,13 +38,19 @@ const Page: FC = () => {
     const [data, setData] = useState<Array<GenerateResult> | undefined>()
 
     const init = async () => {
+        if (!token) {
+            alert('Та системд нэвтэрнэ үү.')
+            router.replace('/login')
+            return
+        }
+
         setIsLoading(true)
 
         const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/pictures/history`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'authorization': 'Bearer 0b6d06e5-4ec3-4253-8e45-49652aaa3df7'
+                'authorization': `Bearer ${token}`
             },
         })
 
@@ -58,6 +69,7 @@ const Page: FC = () => {
     useEffect(() => {
         init()
     }, [])
+
     return (
         <div className="flex divide-x divide-y">
             <div className="flex flex-col gap-8 px-4">

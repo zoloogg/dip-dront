@@ -1,26 +1,22 @@
 'use client'
 import { AuthButton } from "@/components/authButton"
 import { AuthInput } from "@/components/authInput"
-import { useAuth } from "@/context/authContext"
 import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
-// import { AuthContainer } from "./components/container/authContainer"
-// import { Button } from "../button"
 
 const Page: FC = () => {
     const router = useRouter()
-    const { setToken } = useAuth()
 
     const [username, setUsername] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
-    const onLogin = async () => {
+    const onSubmit = async () => {
         if (!username || !password) {
             alert('Нэр эсвэл нууц үг хоосон байна')
             return
         }
 
-        const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+        const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -39,14 +35,9 @@ const Page: FC = () => {
             return
         }
 
-        alert('Амжилттай нэвтэрлээ.')
-        setToken(data.token)
+        alert('Амжилттай бүртгэгдлээ. Нэвтрэх хуудас руу шилжих болно')
 
-        router.replace('/')
-    }
-
-    const onRegister = async () => {
-        router.replace('/register')
+        router.replace('/login')
     }
 
     return (
@@ -73,7 +64,7 @@ const Page: FC = () => {
                         display: 'flex',
                         justifyContent: 'center', gap: '30px',
                     }}>
-                        Нэвтрэх
+                        Бүртгүүлэх
                     </span>
                 </div>
                 <div className="flex flex-col gap-4">
@@ -82,19 +73,7 @@ const Page: FC = () => {
                 </div>
                 <hr />
                 <div className="flex flex-col gap-4">
-                    <AuthButton onClick={onLogin} text="Нэвтрэх" />
-                    <AuthButton onClick={onRegister} text="Бүртгүүлэх" />
-                </div>
-                <div><span style={{
-                    color: '#FFFFFF',
-                    fontSize: '20px',
-                    fontFamily: '"Open Sans", sans-serif',
-                    fontWeight: 400,
-                    display: 'flex',
-                    justifyContent: 'center'
-                }}>
-                    Нууц үг мартсан?
-                </span>
+                    <AuthButton onClick={onSubmit} text="Бүртгүүлэх" />
                 </div>
             </div>
         </div>
