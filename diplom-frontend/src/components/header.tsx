@@ -11,7 +11,7 @@ export const Header = () => {
 
             {/* Search bar */}
             <div>
-                <input type="text" placeholder="Хайх" style={{ width: '326px', height: '40px', background: 'white', borderRadius: '90px', border: 'none' }} />
+                <input type="text" placeholder="Хайх" style={{ width: '326px', height: '40px', background: 'white', borderRadius: '90px', border: 'none'}} />
                 <button>
                     <img style={{ width: '25px', height: '25px' }} src="image/search.png" />
                 </button>
