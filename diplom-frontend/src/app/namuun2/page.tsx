@@ -1,8 +1,62 @@
 import { FC } from "react"
 
 const Page: FC = () => {
-    return (
-        <div style={{width: '100%', height: '100%', position: 'relative', background: '#111111'}}>
+  return (
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
+      {/* 3 button */}
+      <div style={{ marginLeft: '80px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <img style={{ width: '40px', height: '40px', left: '115px', top: '140px', marginTop: '30px' }} src="image/create.png" />
+          <p style={{ color: '#7C7C7C', fontSize: '14px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700 }}>Үүсгэх</p>
+        </div>
+        <div>
+          <img style={{ width: '40px', height: '40px', left: '115px', top: '140px', marginTop: '50px' }} src="image/rec2.png" />
+          <p style={{ color: '#7C7C7C', fontSize: '14px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700 }}>Засах</p>
+        </div>
+        <div>
+          <img style={{ width: '40px', height: '40px', left: '115px', top: '140px', marginTop: '50px' }} src="image/hist2.png" />
+          <p style={{ color: '#7C7C7C', fontSize: '14px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700 }}>Түүх</p>
+        </div>
+      </div>
+
+      {/* goliin bosoo bagana */}
+      <div style={{ marginLeft: '60px' }}>
+        <div>
+          <p style={{ color: 'white', fontSize: '20px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700 }}>Төрөл сонгох
+            <div style={{ color: '#7C7C7C', fontSize: '16px', fontFamily: '"Open Sans", sans-serif', fontWeight: 300, marginTop: '15px' }}>
+              <input type="checkbox" />Аниме зураг
+            </div>
+            <div style={{ color: '#7C7C7C', fontSize: '16px', fontFamily: '"Open Sans", sans-serif', fontWeight: 300, marginTop: '12px' }}>
+              <input type="checkbox" />Хар зураг
+            </div>
+            <div style={{ color: '#7C7C7C', fontSize: '16px', fontFamily: '"Open Sans", sans-serif', fontWeight: 300, marginTop: '12px' }}>
+              <input type="checkbox" style={{ background: '#292929', border: '1px white solid' }} />Энгийн зураг
+            </div>
+          </p>
+        </div>
+
+
+        <div>
+          <p style={{ color: 'white', fontSize: '20px', fontFamily: '"Open Sans", sans-serif', fontWeight: 700, marginTop:'20px' }}>Текст оруулах</p>
+          <input type="text" placeholder="текст оруулна уу..." style={{width: '184px', height: '140px', background: '#292929', borderRadius: '19px', border: '1px #FF6500 solid', marginTop:'20px'}} />
+        </div>
+
+        <div>
+          <p>Зургийн тоо</p>
+          <form style={{left: '214px', top: '690px', position: 'absolute'}}>
+          <input type="text" id="put" style={{width: '20px', height: '20px', color: 'white', border: '#FF6500 1px solid', borderRadius: '25%', backgroundColor: '#292929', marginLeft: '160px', marginTop: '-80px'}} /><br />
+          
+        </form>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Page
+
+{/*
+  <div style={{width: '100%', height: '100%', position: 'relative', background: '#111111'}}>
         <div style={{width: '1440px', height: '100px', left: '0px', top: '0px', position: 'absolute', background: '#111111', border: '1px #292929 solid'}} />
         <div style={{width: '1440px', height: '714px', left: '0px', top: '100px', position: 'absolute', background: '#111111', border: '1px #292929 solid'}} />
         <a href="main.html">
@@ -97,7 +151,7 @@ const Page: FC = () => {
           <input type="text" placeholder="текст оруулна уу..." style={{width: '184px', height: '140px', left: '214px', top: '320px', position: 'absolute', background: '#292929', borderRadius: '19px', border: '1px #FF6500 solid'}} />
         </div>
         <div>
-          {/* */}
+          
           <input type="number" style={{width: '116px', height: '18px', left: '282px', top: '558px', position: 'absolute', background: '#292929', borderRadius: '19px', border: '1px #FF6500 solid'}} />
           <input type="number" style={{width: '116px', height: '18px', left: '282px', top: '590px', position: 'absolute', background: '#292929', borderRadius: '19px', border: '1px #FF6500 solid'}} />
         </div>
@@ -122,7 +176,4 @@ const Page: FC = () => {
           </a>
         </button>
       </div>
-    )
-}
-
-export default Page
+*/}
