@@ -1,4 +1,5 @@
 'use client'
+import { AuthButton } from "@/components/authButton"
 import { Title } from "@/components/typography/title"
 import { useAuth } from "@/context/authContext"
 import { useRouter } from "next/navigation"
@@ -8,7 +9,7 @@ import { FC, useEffect, useState } from "react"
 
 const Page: FC = () => {
     const router = useRouter()
-    const { token } = useAuth()
+    const { token, logout } = useAuth()
     const [data, setData] = useState<{
         user: {
             id: number
@@ -48,6 +49,14 @@ const Page: FC = () => {
         init()
     }, [])
 
+    const onLogout = () => {
+        logout()
+
+        alert('Амжилттай гарлаа.')
+
+        router.replace('/login')
+    }
+
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{
@@ -67,6 +76,8 @@ const Page: FC = () => {
                 <pre>
                     {JSON.stringify(data, null, 2)}
                 </pre>
+
+                <AuthButton text="Гарах" onClick={onLogout} />
             </div>
         </div>
 

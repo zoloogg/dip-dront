@@ -4,6 +4,7 @@ import { createContext, FunctionComponent, useContext, useState } from "react"
 interface AuthContext {
     token: string | undefined
     setToken: (value: string) => void
+    logout: () => void
 }
 
 const authContext = createContext<AuthContext>({
@@ -11,6 +12,8 @@ const authContext = createContext<AuthContext>({
     setToken: (value) => {
         console.log(value)
         throw new Error('setToken function must be overridden')
+    },
+    logout: () => {
     }
 })
 
@@ -25,7 +28,10 @@ export const AuthProvider: FunctionComponent<Props> = ({ children }) => {
         <authContext.Provider
             value={{
                 token: token,
-                setToken: setToken
+                setToken: setToken,
+                logout: () => {
+                    setToken(undefined)
+                }
             }}
         >
             {children}
